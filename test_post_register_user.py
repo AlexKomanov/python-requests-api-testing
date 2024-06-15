@@ -1,7 +1,7 @@
 import requests
 from assertpy import assert_that
 
-def test_register_user_hapy_flow():
+def test_register_user_happy_flow():
     
     register_user_data = {
         "email": "eve.holt@reqres.in",
@@ -19,7 +19,7 @@ def test_register_user_hapy_flow():
     assert "token" in response.json().keys()
     
 
-def test_register_user_hapy_flow():
+def test_register_user_not_happy_flow():
     
     register_user_data = {
         "email": "eve.holt@reqres.in"
