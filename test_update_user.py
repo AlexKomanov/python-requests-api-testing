@@ -1,5 +1,6 @@
 import requests
 from assertpy import assert_that
+from configurations import base_url
 
 def test_update_user_with_put_request():
         
@@ -10,7 +11,7 @@ def test_update_user_with_put_request():
         }
         
         response = requests.put(
-            url="https://reqres.in/api/users/2",
+            url=f"{base_url}/api/users/2",
             json=update_user_data
         )
         
@@ -33,7 +34,7 @@ def test_update_user_with_patch_request():
         }
         
     response = requests.patch(
-            url="https://reqres.in/api/users/2",
+            url=f"{base_url}/api/users/2",
             json=update_user_data
         )
         

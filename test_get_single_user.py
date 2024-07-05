@@ -1,8 +1,9 @@
 import requests
 from assertpy import assert_that
+from configurations import base_url, users_api_url
 
 def test_get_user_status_code_and_ok():
-    response = requests.get("https://reqres.in/api/users/2")
+    response = requests.get(f"{base_url}/api/users/2")
     assert response.status_code == 200
     assert_that(response.status_code).is_equal_to(200)
     assert response.ok == True
@@ -11,7 +12,7 @@ def test_get_user_status_code_and_ok():
 
 def test_get_user_id():
     id = 3
-    response = requests.get(f"https://reqres.in/api/users/{id}")
+    response = requests.get(f"{users_api_url}/{id}")
     json_response = response.json()
 
     assert_that(json_response).contains_key("data")

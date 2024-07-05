@@ -1,5 +1,6 @@
 import requests
 from assertpy import assert_that
+from configurations import base_url
 
 def test_register_user_happy_flow():
     
@@ -9,7 +10,7 @@ def test_register_user_happy_flow():
         }
     
     response = requests.post(
-        url="https://reqres.in/api/register",
+        url=f"{base_url}/api/register",
         json=register_user_data
         )
     
@@ -26,7 +27,7 @@ def test_register_user_not_happy_flow():
         }
     
     response = requests.post(
-        url="https://reqres.in/api/register",
+        url=f"{base_url}/api/register",
         json=register_user_data
         )
     

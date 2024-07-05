@@ -1,5 +1,6 @@
 import requests 
 from assertpy import assert_that
+from configurations import base_url
 
 def test_user_creation():
     
@@ -13,7 +14,7 @@ def test_user_creation():
     creation_user_data = name_entry|job_entry
     
     response = requests.post(
-        url="https://reqres.in/api/users",
+        url=f"{base_url}/api/users",
         json=creation_user_data
     )
     

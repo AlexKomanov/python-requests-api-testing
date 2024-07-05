@@ -1,6 +1,7 @@
 import requests
 from assertpy import assert_that
 from cerberus import Validator
+from configurations import base_url
 
 def test_register_user_schema_structure():
  
@@ -18,7 +19,7 @@ def test_register_user_schema_structure():
         }
     
     response = requests.post(
-        url="https://reqres.in/api/register",
+        url=f"{base_url}/api/register",
         json=register_user_data
         )
     
@@ -33,10 +34,10 @@ def test_register_user_schema_structure():
         "email": "janet.weaver@reqres.in",
         "first_name": "Janet",
         "last_name": "Weaver",
-        "avatar": "https://reqres.in/img/faces/2-image.jpg"
+        "avatar": f"{base_url}/img/faces/2-image.jpg"
     },
     "support": {
-        "url": "https://reqres.in/#support-heading",
+        "url": f"{base_url}/#support-heading",
         "text": "To keep ReqRes free, contributions towards server costs are appreciated!"
     }
 }
@@ -64,7 +65,7 @@ def test_get_user_schema_structure():
     }
     
     validator = Validator(schema, require_all=True)
-    response = requests.get("https://reqres.in/api/users/2")
+    response = requests.get(f"{base_url}/api/users/2")
     if response.status_code == 200:
         is_valid = validator.validate(response.json())
         assert_that(is_valid, description=validator.errors).is_true()
