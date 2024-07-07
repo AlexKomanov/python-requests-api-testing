@@ -2,7 +2,9 @@ import requests
 from assertpy import assert_that
 from cerberus import Validator
 from configurations import base_url
+import pytest
 
+@pytest.mark.sanity()
 def test_register_user_schema_structure():
  
     schema = {

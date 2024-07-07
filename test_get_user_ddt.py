@@ -12,7 +12,7 @@ testing_data = [
     (5, "charles.morris@reqres.in", "Charles")
 ]
 
-
+@pytest.mark.regression()
 @pytest.mark.parametrize("user_id, user_email, user_first_name", testing_data)
 def test_get_user_and_validate_data(user_id, user_email, user_first_name):
     response = requests.get(f"{users_api_url}/{user_id}")
